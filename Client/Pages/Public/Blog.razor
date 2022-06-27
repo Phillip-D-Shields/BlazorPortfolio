@@ -1,4 +1,5 @@
 ﻿@page "/blog"
+@using Client.Components.Public.Blog
 
 <Client.Components.Public.Shared.Navbar />
 
@@ -7,40 +8,15 @@
         <div class="col">
             <h1 class="my-3">blog</h1>
             <p>click on a post to read more</p>
-
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="category thumbnail img" />
-                        <div class="card-body">
-                            <h3 class="card-title">title</h3>
-                            <p class="card-text">description</p>
-                            
-                        </div>
-                        <a href="/" class="btn btn-primary stretched-link">read more</a>
-                    </div>
+                    <CategoryCard />
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="category thumbnail img" />
-                        <div class="card-body">
-                            <h3 class="card-title">title</h3>
-                            <p class="card-text">description</p>
-                            
-                        </div>
-                        <a href="/" class="btn btn-primary stretched-link">read more</a>
-                    </div>
+                   <CategoryCard />
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow mb-2">
-                        <img src="assets/img/other/placeholder.jpg" class="card-img-top" alt="category thumbnail img" />
-                        <div class="card-body">
-                            <h3 class="card-title">title</h3>
-                            <p class="card-text">description</p>
-                            
-                        </div>
-                        <a href="/" class="btn btn-primary stretched-link">read more</a>
-                    </div>
+                   <CategoryCard />
                 </div>
             </div>
         </div>
