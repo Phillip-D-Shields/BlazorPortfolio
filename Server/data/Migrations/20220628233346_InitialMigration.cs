@@ -26,17 +26,17 @@ namespace Server.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImgPath" },
-                values: new object[] { 1, "description of category 1", "Category 1", "uploads.placeholder.jpg" });
+                values: new object[] { 1, "description of category 1", "Category 1", "uploads/placeholder.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImgPath" },
-                values: new object[] { 2, "description of category 2", "Category 2", "uploads.placeholder.jpg" });
+                values: new object[] { 2, "description of category 2", "Category 2", "uploads/placeholder.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "Description", "Name", "ThumbnailImgPath" },
-                values: new object[] { 3, "description of category 3", "Category 3", "uploads.placeholder.jpg" });
+                values: new object[] { 3, "description of category 3", "Category 3", "uploads/placeholder.jpg" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

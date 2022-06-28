@@ -10,7 +10,7 @@ using Server.data;
 namespace Server.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20220628215352_InitialMigration")]
+    [Migration("20220628233346_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,21 +49,21 @@ namespace Server.Data.Migrations
                             CategoryId = 1,
                             Description = "description of category 1",
                             Name = "Category 1",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         },
                         new
                         {
                             CategoryId = 2,
                             Description = "description of category 2",
                             Name = "Category 2",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         },
                         new
                         {
                             CategoryId = 3,
                             Description = "description of category 3",
                             Name = "Category 3",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         });
                 });
 #pragma warning restore 612, 618

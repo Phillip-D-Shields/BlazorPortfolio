@@ -47,21 +47,21 @@ namespace Server.Data.Migrations
                             CategoryId = 1,
                             Description = "description of category 1",
                             Name = "Category 1",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         },
                         new
                         {
                             CategoryId = 2,
                             Description = "description of category 2",
                             Name = "Category 2",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         },
                         new
                         {
                             CategoryId = 3,
                             Description = "description of category 3",
                             Name = "Category 3",
-                            ThumbnailImgPath = "uploads.placeholder.jpg"
+                            ThumbnailImgPath = "uploads/placeholder.jpg"
                         });
                 });
 #pragma warning restore 612, 618

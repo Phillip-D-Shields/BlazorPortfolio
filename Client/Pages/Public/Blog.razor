@@ -3,21 +3,25 @@
 
 <Client.Components.Public.Shared.Navbar />
 
+
 <main class="container min-vh-90 p-5">
     <div class="row">
         <div class="col">
             <h1 class="my-3">blog</h1>
             <p>click on a post to read more</p>
             <div class="row">
-                <div class="col-md-4">
-                    <CategoryCard />
-                </div>
-                <div class="col-md-4">
-                   <CategoryCard />
-                </div>
-                <div class="col-md-4">
-                   <CategoryCard />
-                </div>
+
+                @if (inMemoryDatabaseCache.Categories != null)
+                {
+                    for (int i = 0; i < inMemoryDatabaseCache.Categories.Count; i++)
+                    {
+                        <div class="col-md-4">
+                            <CategoryCard category="inMemoryDatabaseCache.Categories[i]" />
+                        </div>
+                    }
+                }
+                
+
             </div>
         </div>
     </div>
@@ -25,5 +29,29 @@
 
 
 <Client.Components.Public.Shared.Footer />
+
+@implements IDisposable
+
+@code
+{
+    [Inject] InMemoryDatabaseCache inMemoryDatabaseCache { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        inMemoryDatabaseCache.OnCategoriesDataChanged += StateHasChanged;
+
+        if (inMemoryDatabaseCache.Categories == null)
+        {
+            await inMemoryDatabaseCache.GetCategoriesFromDatabaseAndCache();
+        }
+    }
+
+    // unsubscribe from events Dispose(), or else a memory leak is created
+    public void Dispose()
+    {
+        // unsubscribe
+        inMemoryDatabaseCache.OnCategoriesDataChanged -= StateHasChanged;
+    }
+}
 
 

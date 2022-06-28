@@ -21,7 +21,7 @@ namespace Server.data
                 categoriesToSeed[i - 1] = new Category
                 {
                     CategoryId = i,
-                    ThumbnailImgPath = "uploads.placeholder.jpg",
+                    ThumbnailImgPath = "uploads/placeholder.jpg",
                     Name = $"Category {i}",
                     Description = $"description of category {i}"
                 };
