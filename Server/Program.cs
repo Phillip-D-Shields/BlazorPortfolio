@@ -30,11 +30,18 @@ builder.Services.AddSwaggerGen(setupAction: c =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI(swaggerUIOptions =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    swaggerUIOptions.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "PortfolioServer API");
+    swaggerUIOptions.RoutePrefix = String.Empty;
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
