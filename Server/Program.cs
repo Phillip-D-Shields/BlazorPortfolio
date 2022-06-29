@@ -1,53 +1,52 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Server.data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Server.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<AppDBContext>(options =>
+builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlite(
+    builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddSwaggerGen(c =>
 {
-    options.UseSqlite(
-        builder.Configuration.GetConnectionString(name: "DefaultConnection"
-        ));
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Server", Version = "v1" });
 });
 
-builder.Services.AddRouting(configureOptions: options => options.LowercaseUrls = true);
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("CorsPolicy",
-//        builder =>
-//        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-//        );
-//});
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(setupAction: c =>
-{
-    c.SwaggerDoc(name: "v1", info: new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Server", Version = "v1" });
-});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI(swaggerUIOptions =>
 {
-    swaggerUIOptions.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "PortfolioServer API");
+    swaggerUIOptions.SwaggerEndpoint("/swagger/v1/swagger.json", "JohnDoeServer API");
     swaggerUIOptions.RoutePrefix = string.Empty;
 });
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
-// app.UseCors("CorsPolicy");app.UseCors("CorsPolicy");
+
+app.UseRouting();
+
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();
