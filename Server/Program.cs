@@ -12,13 +12,13 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 });
 
 builder.Services.AddRouting(configureOptions: options => options.LowercaseUrls = true);
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("CorsPolicy",
-        builder =>
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-        );
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("CorsPolicy",
+//        builder =>
+//        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+//        );
+//});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -40,12 +40,12 @@ app.UseSwagger();
 app.UseSwaggerUI(swaggerUIOptions =>
 {
     swaggerUIOptions.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "PortfolioServer API");
-    swaggerUIOptions.RoutePrefix = String.Empty;
+    swaggerUIOptions.RoutePrefix = string.Empty;
 });
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCors("CorsPolicy");
+// app.UseCors("CorsPolicy");app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
