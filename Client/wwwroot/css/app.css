@@ -61,8 +61,9 @@
     background-color: #EBEBEB;
 }
 
-.bg-motherboard-dev {
-    background-image: url("../assets/img/publicbackgrounds/bg-motherboard-dev.jpg");
+.bg-forest {
+    background-image: url("../assets/img/publicbackgrounds/bg-forest.jpg");
+    background-position: bottom;
 }
 
 .bg-white-94 {
