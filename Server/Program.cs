@@ -15,6 +15,8 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Server", Version = "v1" });
 });
+   
+
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
