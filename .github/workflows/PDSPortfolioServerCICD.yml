@@ -56,5 +56,5 @@ jobs:
       with:
         app-name: PDSPortfolioServer
         slot-name: 'production'
-        publish-profile: ${{ secrets.PDSPortfolioServer_FFFF }}
+        publish-profile: ${{ secrets.PDSPORTFOLIOSERVER_FFFF }}
         package: .
